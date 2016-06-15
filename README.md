@@ -19,5 +19,5 @@ This app is created to demo how we can use React/Redux with Meteor. The basic id
 
 It uses the modules below:
 * `redux` store as the single data source for the UI components
-* `react-redux` to `connect` the state tree with components and pass it as context through `Provider`
-* `redux-thunk` as the middleware for async calls, Meteor subscriptions, and __dependency injection__
+* `react-redux` to `connect` the state tree with components and pass the store as context through `Provider`
+* `redux-thunk` as the middleware for business logic like async calls, Meteor subscriptions, etc. It provides __dependency injection__
