@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { findDOMNode } from 'react-dom';
 import { connect } from 'react-redux';
 import {
   Button,
@@ -10,31 +11,24 @@ import {
 
 
 import Task from './task.js';
-import { subscribe, addTask, removeTask } from  '../actions';
+import { subscribe, addTask } from  '../actions';
 
 
 // dummy
 class App extends Component {
-  constructor(p) {
-    super(p);
-    this.state = {
-      newTask: null
-    }
-  }
   componentDidMount() {
     this.computation = this.props.subscribe();
   }
   componentWillUnmount() {
     this.computation.stop()
   }
-  handleChange(e) {
-    e.preventDefault();
-    this.setState({newTask: e.target.value});
-  }
   handleAddTask(e) {
     e.preventDefault();
-    const task = { text: this.state.newTask };
+    // Have to use findDOMNode with react-bootstrap
+    const node = findDOMNode(this.refs.taskInput);
+    const task = {text: node.value};
     this.props.addTask(task);
+    node.value = null;
   }
   renderTasks() {
     return (this.props.tasks||[]).map((task) => (
@@ -50,7 +44,7 @@ class App extends Component {
         </header>
         <FormGroup>
           <InputGroup>
-            <FormControl type="text" onChange={this.handleChange.bind(this)}/>
+            <FormControl type="text" ref="taskInput"/>
             <InputGroup.Button>
               <Button bsStyle="info" onClick={this.handleAddTask.bind(this)}> Add Task </Button>
             </InputGroup.Button>
@@ -77,4 +71,3 @@ const mapDispatch = (dispatch, getState) => {
   }
 }
 export default connect(mapState, mapDispatch)(App)
-
