@@ -22,7 +22,10 @@ class App extends Component {
     }
   }
   componentDidMount() {
-    this.props.subscribe();
+    this.computation = this.props.subscribe();
+  }
+  componentWillUnmount() {
+    this.computation.stop()
   }
   handleChange(e) {
     e.preventDefault();
@@ -74,3 +77,4 @@ const mapDispatch = (dispatch, getState) => {
   }
 }
 export default connect(mapState, mapDispatch)(App)
+
