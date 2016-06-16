@@ -12,7 +12,10 @@ import Collections from '../imports/lib/collection';
 
 const store = createStore(
   reducer,
-  applyMiddleware(thunk.withExtraArgument({ Meteor, Tracker, Collections }))
+  compose(
+    applyMiddleware(thunk.withExtraArgument({ Meteor, Tracker, Collections })),
+    window.devToolsExtension ? window.devToolsExtension() : f => f
+  )
 )
 
 Meteor.startup(() => {
