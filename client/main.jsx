@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
 import { reducer } from '../imports/reducer';
-import App from '../imports/ui/index.js';
+import App from '../imports/modules/tasks/containers/main.js';
 import Collections from '../imports/lib/collection';
 
 const store = createStore(
