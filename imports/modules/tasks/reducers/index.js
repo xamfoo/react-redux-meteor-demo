@@ -1,6 +1,5 @@
-import Main from './Main';
-import Task from './Task';
+import Tasks from './main';
 
 export default {
-  Main, Task
+  Tasks
 }

@@ -17,7 +17,8 @@ class container extends Component {
 }
 
 // container
-const mapState = ({tasks, count}) => {
+const mapState = ({Tasks}) => {
+  const {tasks, count} = Tasks
   return {
     tasks, count
   }
