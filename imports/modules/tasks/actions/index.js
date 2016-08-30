@@ -1,3 +1,4 @@
+import * as types from '../constants/tasks';
 
 export const subscribe = () => {
   return (dispatch, getState, { Meteor, Tracker, Collections }) => {
@@ -5,7 +6,7 @@ export const subscribe = () => {
     let computation = Tracker.autorun(() => {
       if (subs.ready()) {
         dispatch({
-          type: "UPDATE_TASK",
+          type: types.UPDATE_TASK,
           tasks: Collections.Todos.find().fetch(),
         })
       }
