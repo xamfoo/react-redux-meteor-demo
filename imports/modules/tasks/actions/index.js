@@ -6,7 +6,7 @@ export const subscribe = () => {
     let computation = Tracker.autorun(() => {
       if (subs.ready()) {
         dispatch({
-          type: types.UPDATE_TASK,
+          type: types.UPDATE_TASKS,
           tasks: Collections.Todos.find().fetch(),
         })
       }

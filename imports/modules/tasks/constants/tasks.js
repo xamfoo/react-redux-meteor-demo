@@ -1,1 +1,1 @@
-export const UPDATE_TASK = "UPDATE_TASK"
+export const UPDATE_TASKS = "UPDATE_TASKS"

@@ -7,7 +7,7 @@ export default (state = initState, action) => {
         ...state,
         count: (state.count || 0) + 1
       }
-    case "UPDATE_TASK":
+    case "UPDATE_TASKS":
       return {
         ...state,
         tasks: action.tasks
