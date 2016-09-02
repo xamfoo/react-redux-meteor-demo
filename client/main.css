@@ -19,11 +19,22 @@ body {
   font-size: 14px;
 }
 
-.container {
+.tasks-container {
   max-width: 600px;
   margin: 0 auto;
   min-height: 100%;
   background: white;
+
+}
+
+.tasks-container form {
+  padding: 10px 15px;
+}
+
+.tasks-container .add-task-btn {
+  display: block;
+  margin-left: auto;
+  margin-right: 15px;
 }
 
 header {
