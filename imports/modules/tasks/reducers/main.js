@@ -1,17 +1,22 @@
-const initState = {};
+import {
+  modelReducer,
+  formReducer
+} from 'react-redux-form';
+import { combineReducers } from 'redux';
+import { MEDIUM, PRIORITIES } from '../constants/priorities';
 
-export default (state = initState, action) => {
-  switch (action.type) {
-    case "INC_COUNT":
-      return {
-        ...state,
-        count: (state.count || 0) + 1
-      }
-    case "UPDATE_TASKS":
-      return {
-        ...state,
-        tasks: action.tasks
-      }
+const initialTaskState = {
+  text: '',
+  priority: PRIORITIES.indexOf(MEDIUM),
+};
+
+export default combineReducers({
+  task: modelReducer('Tasks.task', initialTaskState),
+  form: formReducer('Tasks.task', initialTaskState),
+  tasks: (state = [], action) => {
+    switch (action.type) {
+      case 'UPDATE_TASKS': return action.tasks;
+      default: return state;
+    }
   }
-  return state
-}
+});
